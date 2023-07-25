@@ -244,6 +244,15 @@ const removeAmmount = function (accountName, amount) {
     return;
   }
 
+  if (accountData.balance < amount) {
+    console.log(
+      chalk.bgRed.black(
+        `Saldo insuficiente, seu saldo é de R$${accountData.balance}`,
+      ),
+    );
+    return;
+  }
+
   accountData.balance -= +amount;
 
   fs.writeFileSync(
